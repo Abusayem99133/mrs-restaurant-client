@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import MenuItem from "../../Shareds/MenuItem/MenuItem";
 import SharedButton from "../../Shareds/SharedButton";
+import CallUs from "../Home/CallUs";
 
 const PopularMenu = () => {
   const [menu, setMenu] = useState([]);
@@ -28,6 +29,9 @@ const PopularMenu = () => {
       </div>
       <div>
         <SharedButton button="View Full Menu" />
+      </div>
+      <div>
+        <CallUs />
       </div>
     </section>
   );
