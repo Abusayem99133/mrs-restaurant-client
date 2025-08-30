@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 
 const navOptions = [
-  <li>
+  <li className="hover:bg-slate-100 hover:text-black">
     <Link to={"/"}>Home</Link>
   </li>,
-  <li>
+  <li className="hover:bg-slate-100 hover:text-black">
     <Link to={"contact"}>Contact Us</Link>
   </li>,
-  <li>
+  <li className="hover:bg-slate-100 hover:text-black">
     <Link to={"dashboard"}>Dashboard</Link>
   </li>,
-  <li>
+  <li className="hover:bg-slate-100 hover:text-black">
     <Link to={"/menu"}>Our Menu</Link>
   </li>,
-  <li>
+  <li className="hover:bg-slate-100 hover:text-black">
     <Link to={"ourShop"}>Our Shop</Link>
   </li>,
 ];
@@ -42,7 +42,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {navOptions}
             </ul>
