@@ -14,7 +14,7 @@ const navOptions = [
     <Link to={"/menu"}>Our Menu</Link>
   </li>,
   <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"ourShop"}>Our Shop</Link>
+    <Link to={"/order"}>Our Shop</Link>
   </li>,
 ];
 const Navbar = () => {
