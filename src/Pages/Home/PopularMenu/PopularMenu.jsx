@@ -2,7 +2,7 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import MenuItem from "../../Shareds/MenuItem/MenuItem";
 import SharedButton from "../../Shareds/SharedButton";
 import CallUs from "../Home/CallUs";
-import useMenu from "../../../hooks/useHoks";
+import useMenu from "../../../hooks/useHooks";
 
 const PopularMenu = () => {
   const [menu] = useMenu();
