@@ -1,7 +1,8 @@
 import orderCover from "../../../assets/shop/banner2.jpg";
-import FoodCard from "../../../Components/FoodCard/FoodCard";
+
 import useMenu from "../../../hooks/useHooks";
 import Cover from "../../Shareds/Cover/Cover";
+import OrderTab from "../OrderTab/OrderTab";
 const Order = () => {
   const [menu] = useMenu();
   const desserts = menu?.filter((item) => item?.category === "dessert");
@@ -27,9 +28,7 @@ const Order = () => {
           aria-label="Salad"
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          {salad?.map((item) => (
-            <FoodCard key={item?._id} item={item}></FoodCard>
-          ))}
+          <OrderTab items={salad} />
         </div>
 
         <input
@@ -40,7 +39,7 @@ const Order = () => {
           defaultChecked
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 2
+          <OrderTab items={pizza} />
         </div>
 
         <input
@@ -50,7 +49,7 @@ const Order = () => {
           aria-label="Soups"
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 3
+          <OrderTab items={soup} />
         </div>
         <input
           type="radio"
@@ -59,7 +58,7 @@ const Order = () => {
           aria-label="Desserts"
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 4
+          <OrderTab items={desserts} />
         </div>
         <input
           type="radio"
@@ -68,7 +67,7 @@ const Order = () => {
           aria-label="Drinks"
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 5
+          <OrderTab items={drinks} />
         </div>
       </div>
     </div>
