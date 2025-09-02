@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import orderCover from "../../../assets/shop/banner2.jpg";
 
 import useMenu from "../../../hooks/useHooks";
@@ -5,11 +6,13 @@ import Cover from "../../Shareds/Cover/Cover";
 import OrderTab from "../OrderTab/OrderTab";
 const Order = () => {
   const [menu] = useMenu();
+  const { category } = useParams();
+  console.log(category);
   const desserts = menu?.filter((item) => item?.category === "dessert");
   const soup = menu?.filter((item) => item?.category === "soup");
   const salad = menu?.filter((item) => item?.category === "salad");
   const pizza = menu?.filter((item) => item?.category === "pizza");
-  const offered = menu?.filter((item) => item?.category === "offered");
+  // const offered = menu?.filter((item) => item?.category === "offered");
   const drinks = menu?.filter((item) => item?.category === "drinks");
   return (
     <div>
