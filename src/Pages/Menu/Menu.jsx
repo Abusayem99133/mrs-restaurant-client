@@ -39,7 +39,7 @@ const Menu = () => {
         {/* desserts menu items  */}
         <MenuCategory
           items={desserts}
-          title="Dessert"
+          title="dessert"
           img={dessertImg}
           recipe="Indulge in our delightful collection of desserts, carefully crafted to satisfy your sweet cravings. From rich chocolate delights to fruity creations, every bite is made to bring happiness to your table and end your meal with perfection.
 "
@@ -48,7 +48,7 @@ const Menu = () => {
         {/*  pizza menu items  */}
         <MenuCategory
           items={pizza}
-          title="Pizza"
+          title="pizza"
           img={pizzaImg}
           recipe="Our pizzas are baked to perfection with a golden crust, layered with flavorful sauces, and topped with fresh ingredients. Whether you love classic flavors or bold new combinations, each slice is a taste of authentic comfort.
 
@@ -68,21 +68,21 @@ const Menu = () => {
         {/* soup menu items  */}
         <MenuCategory
           items={soup}
-          title="Soup"
+          title="soup"
           img={soupImg}
           recipe="Warm your soul with our variety of soups, simmered with love and rich ingredients. From creamy textures to light and aromatic broths, our soups are the perfect way to start your meal with comfort and flavor.
 
 "
         />
-        {/* soup menu items  */}
-        <MenuCategory
+        {/* drinks menu items  */}
+        {/* <MenuCategory
           items={drinks}
-          title="Drinks"
+          title="drinks"
           img={menuImg}
           recipe="Quench your thirst with our range of refreshing beverages. From chilled soft drinks to fresh juices and crafted mocktails, our drinks are the perfect companions to elevate your dining experience.
 
 "
-        />
+        /> */}
       </div>
     </div>
   );
