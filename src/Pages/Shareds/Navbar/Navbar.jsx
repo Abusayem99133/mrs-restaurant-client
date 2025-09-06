@@ -14,7 +14,10 @@ const navOptions = [
     <Link to={"/menu"}>Our Menu</Link>
   </li>,
   <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"/order"}>Our Shop</Link>
+    <Link to={"/order/salad"}>Our Shop</Link>
+  </li>,
+  <li className="hover:bg-slate-100 hover:text-black">
+    <Link to={"/login"}>Login</Link>
   </li>,
 ];
 const Navbar = () => {
