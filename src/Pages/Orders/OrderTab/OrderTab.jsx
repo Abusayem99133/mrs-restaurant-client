@@ -1,31 +1,25 @@
+import { PiGreaterThanBold, PiLessThanBold } from "react-icons/pi";
 import FoodCard from "../../../Components/FoodCard/FoodCard";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
 const OrderTab = ({ items }) => {
   return (
-    <div>
-      <Swiper
-        pagination={{
-          type: "fraction",
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
-            {items?.map((item) => (
-              <FoodCard key={item?._id} item={item}></FoodCard>
-            ))}
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+    <>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+        {items?.map((item) => (
+          <FoodCard key={item?._id} item={item}></FoodCard>
+        ))}
+      </div>
+      <div className="flex justify-center gap-5 my-5 ">
+        <button className="btn font-black">
+          <PiLessThanBold />
+          Previous
+        </button>
+        <button className="btn font-black">
+          Next
+          <PiGreaterThanBold />
+        </button>
+      </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import orderCover from "../../../assets/shop/banner2.jpg";
 import useMenu from "../../../hooks/useHooks";
 import Cover from "../../Shareds/Cover/Cover";
@@ -9,6 +9,7 @@ import "react-tabs/style/react-tabs.css";
 const Order = () => {
   const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
   const { category } = useParams(); // object destructure korte hobe
+  const navigate = useNavigate();
   const initialIndex = categories.indexOf(category);
   const [menu] = useMenu();
 
@@ -29,7 +30,7 @@ const Order = () => {
 
       <Tabs
         defaultIndex={initialIndex}
-        onSelect={(index) => console.log(index)}
+        onSelect={(index) => navigate(`/order/${categories[index]}`)}
       >
         <TabList>
           <Tab>Salad</Tab>
