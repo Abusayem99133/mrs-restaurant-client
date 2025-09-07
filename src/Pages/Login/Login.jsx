@@ -1,57 +1,123 @@
+import { useEffect, useState } from "react";
 import authentication from "../../assets/others/authentication.png";
 import authImage from "../../assets/others/authentication2.png";
 import "./login.css";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+
 const Login = () => {
+  const [captchaError, setCaptchaError] = useState(""); // captcha error handle করার জন্য
+
+  useEffect(() => {
+    loadCaptchaEnginge(6); // 6 characters এর captcha load হবে
+  }, []);
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const userCaptcha = form.recaptcha.value;
+
+    // ✅ Captcha check
+    if (!validateCaptcha(userCaptcha)) {
+      setCaptchaError("Captcha did not match, please try again!");
+      form.recaptcha.value = ""; // ভুল হলে input clear করে দেব
+      return;
+    }
+
+    setCaptchaError(""); // ঠিক থাকলে error clear করবে
+    console.log("Login Successful:", email, password);
   };
+
   return (
     <div
-      className="hero bg-base-200 min-h-screen"
+      className="hero min-h-screen bg-cover bg-center"
       style={{
         backgroundImage: `url(${authentication})`,
       }}
     >
-      <div className="hero-content flex-col-reverse md:flex-row shadow w-6xl">
-        <div className="text-center md:w-1/2 lg:text-left">
-          <img src={authImage} alt="" />
+      <div className="hero-content flex-col md:flex-row gap-6 p-6 rounded-2xl shadow w-full max-w-6xl">
+        {/* Left Side Image */}
+        <div className="flex justify-center md:w-1/2 w-full">
+          <img
+            src={authImage}
+            alt="Authentication"
+            className="w-full max-w-md object-contain"
+          />
         </div>
-        <div className="card  md:w-1/2 max-w-sm shrink-0 ">
+
+        {/* Right Side Form */}
+        <div className="card md:w-1/2 w-full max-w-md ">
           <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-5xl font-bold text-center">Login</h1>
-            <fieldset className="fieldset mt-5">
-              <label className="label text-2xl font-bold text-[#444]">
+            <h1 className="text-4xl md:text-5xl font-bold text-center">
+              Login
+            </h1>
+
+            <fieldset className="fieldset mt-5 space-y-3">
+              {/* Email */}
+              <label className="label text-[#444] text-lg md:text-2xl font-bold">
                 Email
               </label>
               <input
                 name="email"
                 type="email"
-                className="input"
+                className="input input-bordered w-full"
                 placeholder="Type here"
+                required
               />
-              <label className="label">Password</label>
+
+              {/* Password */}
+              <label className="label text-[#444] text-lg md:text-2xl font-bold">
+                Password
+              </label>
               <input
                 name="password"
                 type="password"
-                className="input"
+                className="input input-bordered w-full"
                 placeholder="Enter your password"
+                required
               />
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
 
+              {/* Captcha */}
+              <div className="w-full">
+                <LoadCanvasTemplate />
+              </div>
               <input
-                className="btn btn-primary mt-4"
+                name="recaptcha"
+                type="text"
+                className="input input-bordered w-full"
+                placeholder="Enter captcha"
+                required
+              />
+
+              {/* Error Message */}
+              {captchaError && (
+                <p className="text-red-600 font-semibold text-sm">
+                  {captchaError}
+                </p>
+              )}
+
+              {/* Submit */}
+              <input
+                className="btn bg-[#D1A054B2] mt-4 w-full text-white text-xl"
                 type="submit"
-                value={"Sign In"}
+                value="Sign In"
               />
             </fieldset>
-            <p>New here? Create a New Account</p>
-            <span>Or sign in with</span>
+
+            <p className="text-center mt-4 text-sm md:text-base">
+              New here?{" "}
+              <a href="/signup" className="link link-primary font-bold">
+                Create a New Account
+              </a>
+            </p>
+            <span className="text-center text-sm md:text-base">
+              Or sign in with
+            </span>
           </form>
         </div>
       </div>
