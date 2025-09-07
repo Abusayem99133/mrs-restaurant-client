@@ -1,3 +1,6 @@
+import authentication from "../../assets/others/authentication.png";
+import authImage from "../../assets/others/authentication2.png";
+import "./login.css";
 const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
@@ -7,32 +10,35 @@ const Login = () => {
     console.log(email, password);
   };
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col-reverse md:flex-row-reverse">
+    <div
+      className="hero bg-base-200 min-h-screen"
+      style={{
+        backgroundImage: `url(${authentication})`,
+      }}
+    >
+      <div className="hero-content flex-col-reverse md:flex-row shadow w-6xl">
         <div className="text-center md:w-1/2 lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <img src={authImage} alt="" />
         </div>
-        <div className="card bg-base-100 md:w-1/2 max-w-sm shrink-0 shadow-2xl">
+        <div className="card  md:w-1/2 max-w-sm shrink-0 ">
           <form onSubmit={handleLogin} className="card-body">
-            <fieldset className="fieldset">
-              <label className="label">Email</label>
+            <h1 className="text-5xl font-bold text-center">Login</h1>
+            <fieldset className="fieldset mt-5">
+              <label className="label text-2xl font-bold text-[#444]">
+                Email
+              </label>
               <input
                 name="email"
                 type="email"
                 className="input"
-                placeholder="Email"
+                placeholder="Type here"
               />
               <label className="label">Password</label>
               <input
                 name="password"
                 type="password"
                 className="input"
-                placeholder="Password"
+                placeholder="Enter your password"
               />
               <div>
                 <a className="link link-hover">Forgot password?</a>
@@ -41,9 +47,11 @@ const Login = () => {
               <input
                 className="btn btn-primary mt-4"
                 type="submit"
-                value={"Login"}
+                value={"Sign In"}
               />
             </fieldset>
+            <p>New here? Create a New Account</p>
+            <span>Or sign in with</span>
           </form>
         </div>
       </div>
