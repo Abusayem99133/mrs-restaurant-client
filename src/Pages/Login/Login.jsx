@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import authentication from "../../assets/others/authentication.png";
 import authImage from "../../assets/others/authentication2.png";
 import "./login.css";
@@ -7,8 +7,10 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+  const { signIn } = createContext(AuthContext);
   const [captchaError, setCaptchaError] = useState(""); // captcha error handle করার জন্য
 
   useEffect(() => {
@@ -21,7 +23,10 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     const userCaptcha = form.recaptcha.value;
-
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
     // ✅ Captcha check
     if (!validateCaptcha(userCaptcha)) {
       setCaptchaError("Captcha did not match, please try again!");
