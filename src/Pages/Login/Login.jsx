@@ -8,6 +8,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -39,94 +40,99 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="hero min-h-screen bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${authentication})`,
-      }}
-    >
-      <div className="hero-content flex-col md:flex-row gap-6 p-6 rounded-2xl shadow w-full max-w-6xl">
-        {/* Left Side Image */}
-        <div className="flex justify-center md:w-1/2 w-full">
-          <img
-            src={authImage}
-            alt="Authentication"
-            className="w-full max-w-md object-contain"
-          />
-        </div>
+    <>
+      <Helmet>
+        <title>MRS Restaurant | Login</title>
+      </Helmet>
+      <div
+        className="hero min-h-screen bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${authentication})`,
+        }}
+      >
+        <div className="hero-content flex-col md:flex-row gap-6 p-6 rounded-2xl shadow w-full max-w-6xl">
+          {/* Left Side Image */}
+          <div className="flex justify-center md:w-1/2 w-full">
+            <img
+              src={authImage}
+              alt="Authentication"
+              className="w-full max-w-md object-contain"
+            />
+          </div>
 
-        {/* Right Side Form */}
-        <div className="card md:w-1/2 w-full max-w-md ">
-          <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">
-              Login
-            </h1>
+          {/* Right Side Form */}
+          <div className="card md:w-1/2 w-full max-w-md ">
+            <form onSubmit={handleLogin} className="card-body">
+              <h1 className="text-4xl md:text-5xl font-bold text-center">
+                Login
+              </h1>
 
-            <fieldset className="fieldset mt-5 space-y-3">
-              {/* Email */}
-              <label className="label text-[#444] text-lg md:text-2xl font-bold">
-                Email
-              </label>
-              <input
-                name="email"
-                type="email"
-                className="input input-bordered w-full"
-                placeholder="Type here"
-                required
-              />
+              <fieldset className="fieldset mt-5 space-y-3">
+                {/* Email */}
+                <label className="label text-[#444] text-lg md:text-2xl font-bold">
+                  Email
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  className="input input-bordered w-full"
+                  placeholder="Type here"
+                  required
+                />
 
-              {/* Password */}
-              <label className="label text-[#444] text-lg md:text-2xl font-bold">
-                Password
-              </label>
-              <input
-                name="password"
-                type="password"
-                className="input input-bordered w-full"
-                placeholder="Enter your password"
-                required
-              />
+                {/* Password */}
+                <label className="label text-[#444] text-lg md:text-2xl font-bold">
+                  Password
+                </label>
+                <input
+                  name="password"
+                  type="password"
+                  className="input input-bordered w-full"
+                  placeholder="Enter your password"
+                  required
+                />
 
-              {/* Captcha */}
-              <div className="w-full">
-                <LoadCanvasTemplate />
-              </div>
-              <input
-                name="recaptcha"
-                type="text"
-                className="input input-bordered w-full"
-                placeholder="Enter captcha"
-                required
-              />
+                {/* Captcha */}
+                <div className="w-full">
+                  <LoadCanvasTemplate />
+                </div>
+                <input
+                  name="recaptcha"
+                  type="text"
+                  className="input input-bordered w-full"
+                  placeholder="Enter captcha"
+                  required
+                />
 
-              {/* Error Message */}
-              {captchaError && (
-                <p className="text-red-600 font-semibold text-sm">
-                  {captchaError}
-                </p>
-              )}
+                {/* Error Message */}
+                {captchaError && (
+                  <p className="text-red-600 font-semibold text-sm">
+                    {captchaError}
+                  </p>
+                )}
 
-              {/* Submit */}
-              <input
-                className="btn bg-[#D1A054B2] mt-4 w-full text-white text-xl"
-                type="submit"
-                value="Sign In"
-              />
-            </fieldset>
+                {/* Submit */}
+                <input
+                  className="btn bg-[#D1A054B2] mt-4 w-full text-white text-xl"
+                  type="submit"
+                  value="Sign In"
+                />
+              </fieldset>
 
-            <p className="text-center mt-4 text-sm md:text-base">
-              New here?{" "}
-              <a href="/signup" className="link link-primary font-bold">
-                Create a New Account
-              </a>
-            </p>
-            <span className="text-center text-sm md:text-base">
-              Or sign in with
-            </span>
-          </form>
+              <p className="text-center mt-4 text-sm md:text-base">
+                New here?{" "}
+                <a href="/signup" className="link link-primary font-bold">
+                  Create a New Account
+                </a>
+              </p>
+              <span className="text-center text-sm md:text-base">
+                Or sign in with
+              </span>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
