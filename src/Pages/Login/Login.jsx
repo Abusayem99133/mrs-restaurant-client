@@ -9,7 +9,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
@@ -20,7 +20,8 @@ const Login = () => {
     loadCaptchaEnginge(6); // 6 characters এর captcha load হবে
   }, []);
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -40,7 +41,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Successfully Login.");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error("Login Failed:", error.message);
