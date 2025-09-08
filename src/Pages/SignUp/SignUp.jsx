@@ -1,42 +1,34 @@
-import { useContext, useEffect, useState } from "react";
 import authentication from "../../assets/others/authentication.png";
 import authImage from "../../assets/others/authentication2.png";
-import "./login.css";
-import {
-  loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  validateCaptcha,
-} from "react-simple-captcha";
+import "../Login/login.css";
+
 import { AuthContext } from "../../Providers/AuthProvider";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 
-const Login = () => {
-  const { signIn } = useContext(AuthContext);
-  const [captchaError, setCaptchaError] = useState(""); // captcha error handle করার জন্য
+const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
 
-  useEffect(() => {
-    loadCaptchaEnginge(6); // 6 characters এর captcha load হবে
-  }, []);
+  //   const handleSignup = (event) => {
+  //     event.preventDefault();
+  //     const form = event.target;
+  //     const name = form.name.value;
+  //     const email = form.email.value;
+  //     const password = form.password.value;
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    const userCaptcha = form.recaptcha.value;
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
-    // ✅ Captcha check
-    if (!validateCaptcha(userCaptcha)) {
-      setCaptchaError("Captcha did not match, please try again!");
-      form.recaptcha.value = ""; // ভুল হলে input clear করে দেব
-      return;
-    }
+  //     createUser(name, email, password).then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //     });
 
-    setCaptchaError(""); // ঠিক থাকলে error clear করবে
-    console.log("Login Successful:", email, password);
-  };
+  //     console.log("SignUp Successful:", name, email, password);
+  //   };
 
   return (
     <div
@@ -57,71 +49,74 @@ const Login = () => {
 
         {/* Right Side Form */}
         <div className="card md:w-1/2 w-full max-w-md ">
-          <form onSubmit={handleLogin} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <h1 className="text-4xl md:text-5xl font-bold text-center">
-              Login
+              Sign Up
             </h1>
 
             <fieldset className="fieldset mt-5 space-y-3">
+              {/* Name */}
+              <label className="label text-[#444] text-lg md:text-2xl font-bold">
+                Name
+              </label>
+              <input
+                name="name"
+                {...register("name", { required: true })}
+                type="text"
+                className="input input-bordered w-full"
+                placeholder="Type here"
+                required
+              />
+              {errors?.name && (
+                <span className="text-red-600">This field is required</span>
+              )}
               {/* Email */}
               <label className="label text-[#444] text-lg md:text-2xl font-bold">
                 Email
               </label>
               <input
+                {...register("email", { required: true })}
                 name="email"
                 type="email"
                 className="input input-bordered w-full"
                 placeholder="Type here"
                 required
               />
+              {errors?.email && (
+                <span className="text-red-600">This field is required</span>
+              )}
 
               {/* Password */}
               <label className="label text-[#444] text-lg md:text-2xl font-bold">
                 Password
               </label>
               <input
+                {...register("password", { required: true })}
                 name="password"
                 type="password"
                 className="input input-bordered w-full"
                 placeholder="Enter your password"
                 required
               />
-
-              {/* Captcha */}
-              <div className="w-full">
-                <LoadCanvasTemplate />
-              </div>
-              <input
-                name="recaptcha"
-                type="text"
-                className="input input-bordered w-full"
-                placeholder="Enter captcha"
-                required
-              />
-
-              {/* Error Message */}
-              {captchaError && (
-                <p className="text-red-600 font-semibold text-sm">
-                  {captchaError}
-                </p>
+              {errors?.password && (
+                <span className="text-red-600">This field is required</span>
               )}
-
               {/* Submit */}
               <input
                 className="btn bg-[#D1A054B2] mt-4 w-full text-white text-xl"
                 type="submit"
-                value="Sign In"
+                value="Sign Up"
               />
             </fieldset>
 
             <p className="text-center mt-4 text-sm md:text-base">
-              New here?{" "}
+              Already registered?{" "}
               <a href="/signup" className="link link-primary font-bold">
-                Create a New Account
+                Go to login
               </a>
             </p>
             <span className="text-center text-sm md:text-base">
-              Or sign in with
+              Or signUp with
             </span>
           </form>
         </div>
@@ -130,4 +125,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
