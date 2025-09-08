@@ -1,26 +1,57 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
-const navOptions = [
-  <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"/"}>Home</Link>
-  </li>,
-  <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"contact"}>Contact Us</Link>
-  </li>,
-  <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"dashboard"}>Dashboard</Link>
-  </li>,
-  <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"/menu"}>Our Menu</Link>
-  </li>,
-  <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"/order/salad"}>Our Shop</Link>
-  </li>,
-  <li className="hover:bg-slate-100 hover:text-black">
-    <Link to={"/login"}>Login</Link>
-  </li>,
-];
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/");
+        console.log("User Logged out successfully!");
+        toast.success("Successfully LogOut");
+      })
+      .catch((error) => console.log(error));
+  };
+  const navOptions = (
+    <>
+      <li className="hover:bg-slate-100 hover:text-black">
+        <Link to={"/"}>Home</Link>
+      </li>
+
+      <li className="hover:bg-slate-100 hover:text-black">
+        <Link to={"contact"}>Contact Us</Link>
+      </li>
+
+      <li className="hover:bg-slate-100 hover:text-black">
+        <Link to={"dashboard"}>Dashboard</Link>
+      </li>
+
+      <li className="hover:bg-slate-100 hover:text-black">
+        <Link to={"/menu"}>Our Menu</Link>
+      </li>
+
+      <li className="hover:bg-slate-100 hover:text-black">
+        <Link to={"/order/salad"}>Our Shop</Link>
+      </li>
+
+      {user ? (
+        <>
+          <button onClick={handleLogOut} className="btn btn-ghost">
+            LogOut
+          </button>
+        </>
+      ) : (
+        <>
+          <li className="hover:bg-slate-100 hover:text-black">
+            <Link to={"/login"}>Login</Link>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <div>
       <div className="navbar max-w-screen-xl  fixed z-10  bg-black/50 text-white">
@@ -59,6 +90,7 @@ const Navbar = () => {
           <a className="btn">Button</a>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

@@ -9,6 +9,8 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -17,6 +19,7 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6); // 6 characters এর captcha load হবে
   }, []);
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -24,11 +27,6 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     const userCaptcha = form.recaptcha.value;
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
-    // ✅ Captcha check
     if (!validateCaptcha(userCaptcha)) {
       setCaptchaError("Captcha did not match, please try again!");
       form.recaptcha.value = ""; // ভুল হলে input clear করে দেব
@@ -36,11 +34,23 @@ const Login = () => {
     }
 
     setCaptchaError(""); // ঠিক থাকলে error clear করবে
-    console.log("Login Successful:", email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully Login.");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Login Failed:", error.message);
+        toast.error("Invalid email or password");
+      });
   };
 
   return (
     <>
+      <Toaster />
       <Helmet>
         <title>MRS Restaurant | Login</title>
       </Helmet>

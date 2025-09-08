@@ -7,19 +7,29 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    createUser(data?.email, data?.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    });
+    createUser(data?.email, data?.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        toast.success("Successfully Sign Up");
+        console.log("User created :", loggedUser);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Sign Up Failed:", error.message);
+        toast.error(error.message);
+      });
     console.log(data);
   };
 
@@ -44,6 +54,7 @@ const SignUp = () => {
             />
           </div>
 
+          <Toaster />
           {/* Right Side Form */}
           <div className="card md:w-1/2 w-full max-w-md ">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
