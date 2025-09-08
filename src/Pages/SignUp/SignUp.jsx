@@ -3,11 +3,10 @@ import authImage from "../../assets/others/authentication2.png";
 import "../Login/login.css";
 
 import { AuthContext } from "../../Providers/AuthProvider";
-import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -85,13 +84,32 @@ const SignUp = () => {
               {errors?.email && (
                 <span className="text-red-600">This field is required</span>
               )}
+              {/* Age */}
+              <label className="label text-[#444] text-lg md:text-2xl font-bold">
+                Age
+              </label>
+              <input
+                {...register("age", { required: true }, { min: 16, max: 70 })}
+                name="age"
+                type="number"
+                className="input input-bordered w-full"
+                placeholder="Type here"
+                required
+              />
+              {errors?.age && (
+                <span className="text-red-600">This field is required</span>
+              )}
 
               {/* Password */}
               <label className="label text-[#444] text-lg md:text-2xl font-bold">
                 Password
               </label>
               <input
-                {...register("password", { required: true })}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 15,
+                })}
                 name="password"
                 type="password"
                 className="input input-bordered w-full"
@@ -99,7 +117,9 @@ const SignUp = () => {
                 required
               />
               {errors?.password && (
-                <span className="text-red-600">This field is required</span>
+                <span className="text-red-600">
+                  Type to the 6 digit password
+                </span>
               )}
               {/* Submit */}
               <input
