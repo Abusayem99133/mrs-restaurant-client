@@ -1,6 +1,5 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,7 +12,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testimonials = () => {
   const [testimonial, setTestimonial] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://mrs-restaurant-server.vercel.app/review")
       .then((res) => res.json())
       .then((data) => setTestimonial(data));
   }, []);
