@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -36,9 +37,19 @@ const Navbar = () => {
       <li className="hover:bg-slate-100 hover:text-black">
         <Link to={"/order/salad"}>Our Shop</Link>
       </li>
-
+      <li>
+        {" "}
+        <Link to={"/"}>
+          {" "}
+          <button className="btn">
+            <FaShoppingCart />
+            <div className="badge badge-secondary"> +0</div>
+          </button>
+        </Link>
+      </li>
       {user ? (
         <>
+          <span>{user?.displayName}</span>
           <button onClick={handleLogOut} className="btn btn-ghost">
             LogOut
           </button>
