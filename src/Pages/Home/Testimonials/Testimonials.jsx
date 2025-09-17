@@ -11,6 +11,7 @@ import "@smastrom/react-rating/style.css";
 import { FaQuoteLeft } from "react-icons/fa";
 const Testimonials = () => {
   const [testimonial, setTestimonial] = useState([]);
+  // fetch to the review data
   useEffect(() => {
     fetch("http://localhost:5000/review")
       .then((res) => res.json())
