@@ -40,6 +40,7 @@ const AuthProvider = ({ children }) => {
       photoURL: photo,
     });
   };
+  // unsubscribe  current user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
