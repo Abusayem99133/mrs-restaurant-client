@@ -24,7 +24,6 @@ const Testimonials = () => {
         heading={"Testimonials"}
       />
       <div>
-        {" "}
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {testimonial?.map((review) => (
             <SwiperSlide key={review?._id}>
