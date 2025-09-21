@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 export const AuthContext = createContext(null);
-// firebase auth system
+// firebase auth system update
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
