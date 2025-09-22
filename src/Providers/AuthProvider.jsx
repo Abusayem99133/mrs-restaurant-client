@@ -53,6 +53,7 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, []);
+  // authinfo is going on to the
   const authInfo = {
     user,
     loading,
