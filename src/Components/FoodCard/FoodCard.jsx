@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
+  // destructure to the item
   const { image, price, recipe, name } = item;
   const { user } = useAuth();
   const navigate = useNavigate();
