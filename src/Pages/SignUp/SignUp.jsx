@@ -11,19 +11,24 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     createUser(data?.email, data?.password)
       .then((result) => {
         const loggedUser = result.user;
-        toast.success("Successfully Sign Up");
         console.log("User created :", loggedUser);
+        updateUserProfile(data?.name, data?.photoURL).then(() => {
+          console.log("user profile info updated");
+          reset();
+          toast.success("Successfully Sign Up");
+        });
         navigate("/");
       })
       .catch((error) => {

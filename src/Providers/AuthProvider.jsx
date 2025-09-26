@@ -35,6 +35,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   };
+  // updated profile
   const updateUserProfile = (name, photo) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
@@ -60,7 +61,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signIn,
     logOut,
-    updateProfile,
+    updateUserProfile,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
