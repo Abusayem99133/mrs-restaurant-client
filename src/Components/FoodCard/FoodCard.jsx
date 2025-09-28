@@ -20,6 +20,7 @@ const FoodCard = ({ item }) => {
         image,
         price,
       };
+      // added to the database in cart
       axiosSecure.post("/carts", cartItem).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
