@@ -54,7 +54,7 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <Link to={"/"}>
+        <Link to={"/dashboard/cart"}>
           {" "}
           <button className="btn md:-mt-2">
             <FaShoppingCart />
