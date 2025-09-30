@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
   const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
@@ -43,7 +45,7 @@ const Navbar = () => {
           {" "}
           <button className="btn">
             <FaShoppingCart />
-            <div className="badge badge-secondary"> +0</div>
+            <div className="badge badge-secondary"> +{cart?.length}</div>
           </button>
         </Link>
       </li>
