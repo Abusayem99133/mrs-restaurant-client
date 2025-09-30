@@ -20,30 +20,43 @@ const Navbar = () => {
   };
   const navOptions = (
     <>
-      <li className="hover:bg-slate-100 hover:text-black">
-        <Link to={"/"}>Home</Link>
+      <li>
+        <Link className="hover:bg-slate-100 hover:text-black" to={"/"}>
+          Home
+        </Link>
       </li>
 
-      <li className="hover:bg-slate-100 hover:text-black">
-        <Link to={"contact"}>Contact Us</Link>
+      <li>
+        <Link className="hover:bg-slate-100 hover:text-black" to={"contact"}>
+          Contact Us
+        </Link>
       </li>
 
-      <li className="hover:bg-slate-100 hover:text-black">
-        <Link to={"dashboard"}>Dashboard</Link>
+      <li>
+        <Link className="hover:bg-slate-100 hover:text-black" to={"dashboard"}>
+          Dashboard
+        </Link>
       </li>
 
-      <li className="hover:bg-slate-100 hover:text-black">
-        <Link to={"/menu"}>Our Menu</Link>
+      <li>
+        <Link className="hover:bg-slate-100 hover:text-black" to={"/menu"}>
+          Our Menu
+        </Link>
       </li>
 
-      <li className="hover:bg-slate-100 hover:text-black">
-        <Link to={"/order/salad"}>Our Shop</Link>
+      <li>
+        <Link
+          className="hover:bg-slate-100 hover:text-black"
+          to={"/order/salad"}
+        >
+          Our Shop
+        </Link>
       </li>
       <li>
         {" "}
         <Link to={"/"}>
           {" "}
-          <button className="btn">
+          <button className="btn md:-mt-2">
             <FaShoppingCart />
             <div className="badge badge-secondary"> +{cart?.length}</div>
           </button>
@@ -51,7 +64,7 @@ const Navbar = () => {
       </li>
       {user ? (
         <>
-          <span>{user?.displayName}</span>
+          {/* <span>{user?.displayName}</span> */}
           <button onClick={handleLogOut} className="btn btn-ghost">
             LogOut
           </button>
@@ -68,7 +81,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="navbar max-w-screen-xl  fixed z-10  bg-black/50 text-white">
-        <div className="navbar-start">
+        <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -87,9 +100,10 @@ const Navbar = () => {
                 />{" "}
               </svg>
             </div>
+
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-base-100 "
             >
               {navOptions}
             </ul>
