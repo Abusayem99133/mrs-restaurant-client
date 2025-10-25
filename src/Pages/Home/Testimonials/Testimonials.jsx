@@ -38,7 +38,7 @@ const Testimonials = () => {
                   <FaQuoteLeft />
                 </span>
                 <p className="py-8">{review?.details}</p>
-                <h2 className="text-2xl text-orange-400">{review?.name}</h2>
+                <h2 className="text-3xl text-orange-400">{review?.name}</h2>
               </div>
             </SwiperSlide>
           ))}
