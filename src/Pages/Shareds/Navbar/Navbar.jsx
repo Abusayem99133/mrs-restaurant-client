@@ -27,7 +27,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link className="hover:bg-slate-100 hover:text-black" to={"contact"}>
+        <Link className="hover:bg-slate-100 hover:text-black" to={"/contact"}>
           Contact Us
         </Link>
       </li>
@@ -116,9 +116,9 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
-        <div className="navbar-end">
+        {/* <div className="navbar-end">
           <a className="btn">Button</a>
-        </div>
+        </div> */}
       </div>
       <Toaster />
     </div>
