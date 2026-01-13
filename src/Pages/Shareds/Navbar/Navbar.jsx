@@ -35,7 +35,7 @@ const Navbar = () => {
       <li>
         <Link
           className="hover:bg-slate-100 hover:text-black  "
-          to={"dashboard"}
+          to={"/dashboard"}
         >
           Dashboard
         </Link>
