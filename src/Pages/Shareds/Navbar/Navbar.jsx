@@ -74,7 +74,7 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <li className="hover:bg-slate-100 hover:text-black  text-black">
+          <li className="hover:bg-slate-100 hover:text-black ">
             <Link to={"/login"}>Login</Link>
           </li>
         </>
