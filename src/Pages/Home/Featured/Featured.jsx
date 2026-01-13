@@ -14,7 +14,7 @@ const Featured = () => {
             <img src={featuredImg} alt="" />
           </div>
           <div className="md:ml-10">
-            <p>Aug 29, 2025</p>
+            <p>Nov 29, 2025</p>
             <p className="uppercase">Where can i get some? </p>
             <p>
               You can enjoy a variety of delicious dishes at MRS Restaurant,
