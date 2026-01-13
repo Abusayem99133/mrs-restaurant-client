@@ -21,26 +21,20 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <Link
-          className="hover:bg-slate-100 hover:text-black  text-black"
-          to={"/"}
-        >
+        <Link className="hover:bg-slate-100 hover:text-black  " to={"/"}>
           Home
         </Link>
       </li>
 
       <li>
-        <Link
-          className="hover:bg-slate-100 hover:text-black  text-black"
-          to={"contact"}
-        >
+        <Link className="hover:bg-slate-100 hover:text-black" to={"contact"}>
           Contact Us
         </Link>
       </li>
 
       <li>
         <Link
-          className="hover:bg-slate-100 hover:text-black  text-black"
+          className="hover:bg-slate-100 hover:text-black  "
           to={"dashboard"}
         >
           Dashboard
@@ -48,17 +42,14 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link
-          className="hover:bg-slate-100 hover:text-black  text-black"
-          to={"/menu"}
-        >
+        <Link className="hover:bg-slate-100 hover:text-black  " to={"/menu"}>
           Our Menu
         </Link>
       </li>
 
       <li>
         <Link
-          className="hover:bg-slate-100 hover:text-black  text-black"
+          className="hover:bg-slate-100 hover:text-black  "
           to={"/order/salad"}
         >
           Our Shop
