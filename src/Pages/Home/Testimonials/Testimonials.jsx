@@ -28,7 +28,7 @@ const Testimonials = () => {
           {/* map to the data  */}
           {testimonial?.map((review) => (
             <SwiperSlide key={review?._id}>
-              <div className="flex flex-col items-center mx-24 mt-16">
+              <div className="flex flex-col items-center mx-25 mt-16">
                 <Rating
                   style={{ maxWidth: 180 }}
                   value={review?.rating}
