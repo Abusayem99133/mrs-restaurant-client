@@ -34,7 +34,7 @@ const Login = () => {
       return;
     }
 
-    setCaptchaError(""); // ঠিক থাকলে error clear করবে
+    setCaptchaError(""); 
 
     signIn(email, password)
       .then((result) => {
