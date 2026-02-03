@@ -30,7 +30,7 @@ const Login = () => {
     const userCaptcha = form.recaptcha.value;
     if (!validateCaptcha(userCaptcha)) {
       setCaptchaError("Captcha did not match, please try again!");
-      form.recaptcha.value = ""; // ভুল হলে input clear করে দেব
+      form.recaptcha.value = "";
       return;
     }
 
