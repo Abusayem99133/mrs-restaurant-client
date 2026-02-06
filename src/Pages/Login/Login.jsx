@@ -61,7 +61,7 @@ const Login = () => {
           backgroundImage: `url(${authentication})`,
         }}
       >
-        <div className="hero-content flex-col md:flex-row gap-5 p-5 rounded-2xl shadow w-full max-w-6xl">
+        <div className="hero-content flex-col md:flex-row gap-5 p-6 rounded-2xl shadow w-full max-w-6xl">
           {/* Left Side Image */}
           <div className="flex justify-center md:w-1/2 w-full">
             <img
